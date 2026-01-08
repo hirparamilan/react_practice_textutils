@@ -40,53 +40,63 @@ function TextForm(props) {
     setEmails(extracted || []);
   };
 
+  const copyText = () => {
+    navigator.clipboard.writeText(inputText);
+  }
+
   return (
     <>
-      <div className="container">
-        <h1>{props.heading}</h1>
-        <div className="mb-3">
-          <textarea
-            className="form-control"
-            value={inputText}
-            onChange={handleOnChange}
-            id="myBox"
-            rows="8"
-          ></textarea>
+      <div className={`container text-${props.darkMode ? 'light' : 'dark'}`}>
+        <div className="container">
+          <h1>{props.heading}</h1>
+          <div className="mb-3">
+            <textarea
+              className={`form-control bg-${props.darkMode ? 'dark' : 'light'}  text-${props.darkMode ? 'light' : 'dark'}`}
+              value={inputText}
+              onChange={handleOnChange}
+              id="myBox"
+              rows="8"
+            ></textarea>
+          </div>
+
+          <button className="btn btn-warning me-5" onClick={handleClearAll}>
+            Clear Everything
+          </button>
+
+          <button className="btn btn-primary ms-5 me-3" onClick={handleUpClick}>
+            Covert to Uppercase
+          </button>
+
+          <button className="btn btn-primary me-3" onClick={handleLoClick}>
+            Covert to Lowercase
+          </button>
+
+          <button className="btn btn-primary me-3" onClick={handleClear}>
+            Clear Text
+          </button>
+
+          <button className="btn btn-primary me-3" onClick={extractEmails}>
+            Extract Email
+          </button>
+
+          <button className="btn btn-primary" onClick={copyText}>
+            Copy Text
+          </button>
         </div>
 
-        <button className="btn btn-warning me-5" onClick={handleClearAll}>
-          Clear Everything
-        </button>
-
-        <button className="btn btn-primary ms-5 me-3" onClick={handleUpClick}>
-          Covert to Uppercase
-        </button>
-
-        <button className="btn btn-primary me-3" onClick={handleLoClick}>
-          Covert to Lowercase
-        </button>
-
-        <button className="btn btn-primary me-3" onClick={handleClear}>
-          Clear Text
-        </button>
-
-        <button className="btn btn-primary" onClick={extractEmails}>
-          Extract Email
-        </button>
-      </div>
-      <div className="container my-3">
-        <h2>Your text summary</h2>
-        <p>
-          {words} words and {text.length} characters
-        </p>
-        <p>{0.008 * words} minutes read</p>
-        <h2>Preview</h2>
-        <p>{text}</p>
-        <h2>Extracted Emails:</h2>
-        <p>
-            {emails.length>0? emails.join(", "): "No emails found."}
-        </p>
-        {/* {emails.length > 0 ? (
+        <div className="container my-3">
+          <h2>Your text summary</h2>
+          <p>
+            {words} words and {text.length} characters
+          </p>
+          <p>{0.008 * words} minutes read</p>
+          <h2>Preview</h2>
+          <p>{text.length>0? text: "Enter something to preview it here"}</p>
+          <h2>Extracted Emails:</h2>
+          <p>
+            {emails.length > 0 ? emails.join(", ") : "No emails found."}
+          </p>
+          {/* {emails.length > 0 ? (
           <ul>
             {emails.map((email, index) => (
               <li key={index}>{email}</li>
@@ -95,6 +105,7 @@ function TextForm(props) {
         ) : (
           <p>No emails found.</p>
         )} */}
+        </div>
       </div>
     </>
   );

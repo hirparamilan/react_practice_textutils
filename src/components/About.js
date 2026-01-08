@@ -1,36 +1,45 @@
 import React, { useState } from 'react'
 
-export default function About() {
+export default function About(props) {
 
-  const [myStyle, setMyStyle] = useState({
-    backgroundColor: 'white',
-    color: 'black'
-  });
+  // const [myStyle, setMyStyle] = useState({
+  //   backgroundColor: 'white',
+  //   color: 'black'
+  // });
 
-  const [currentMode, setCurrentMode] = useState("light");
-  const [modeBtnStyle, setModeBtnStyle] = useState("btn btn-dark mt-3");
-  const [modeBtnText, setModeBtnText] = useState("Dark");
+  // const [currentMode, setCurrentMode] = useState("light");
+  // const [modeBtnStyle, setModeBtnStyle] = useState("btn btn-dark mt-3");
+  // const [modeBtnText, setModeBtnText] = useState("Dark");
 
-  const toggleStyle = ()=> {
-    if(currentMode === 'light')
-    {
-      setCurrentMode("dark");
-      setModeBtnStyle("btn btn-dark mt-3");
-      setModeBtnText("Light");
-      setMyStyle({
-        backgroundColor: 'black',
-        color: 'white'
-      });
-    }
-    else {
-      setCurrentMode("light");
-      setModeBtnStyle("btn btn-light mt-3");
-      setModeBtnText("Dark");
-      setMyStyle({
-        backgroundColor: 'white',
-        color: 'black'
-      });
-    }
+  let modeBtnStyle;
+  let modeBtnText;
+  let myStyle;
+
+  if (props.darkMode) {
+    // setCurrentMode("light");
+    // setModeBtnStyle("btn btn-light mt-3");
+    // setModeBtnText("Dark");
+    // setMyStyle({
+    //   backgroundColor: 'white',
+    //   color: 'black'
+    // });
+    myStyle = {
+      backgroundColor: 'black',
+      color: 'white'
+    };
+  }
+  else {
+    // setCurrentMode("dark");
+    // setModeBtnStyle("btn btn-dark mt-3");
+    // setModeBtnText("Light");
+    // setMyStyle({
+    //   backgroundColor: 'black',
+    //   color: 'white'
+    // });
+    myStyle = {
+      backgroundColor: 'white',
+      color: 'black'
+    };
   }
 
   return (
@@ -76,9 +85,9 @@ export default function About() {
       </div>
 
       {/* <button type="button" class="btn btn-light mt-3">Enable Light mode</button> */}
-      <div className="container">
+      {/* <div className="container">
         <button type="button" className={modeBtnStyle} onClick={toggleStyle}>Enable {modeBtnText} mode</button>
-      </div>
+      </div> */}
     </div>
   )
 }
