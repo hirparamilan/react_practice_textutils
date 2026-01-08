@@ -9,25 +9,50 @@ function TextForm(props) {
 
   // event-handling
   const handleUpClick = () => {
-    console.log("Uppercase was called");
-    setText(text.toUpperCase());
+    if (text) {
+      console.log("Uppercase was called");
+      setText(text.toUpperCase());
+      props.showAlert("Converterd to Uppercase!", "success");
+    }
+    else {
+      props.showAlert("Please enter some text to covert to Uppercase!", "danger")
+    }
   };
 
   const handleLoClick = () => {
-    console.log("Lowercase was called");
-    setText(text.toLowerCase());
+    if (text) {
+      console.log("Lowercase was called");
+      setText(text.toLowerCase());
+      props.showAlert("Converterd to Lowercase!", "success");
+    }
+    else {
+      props.showAlert("Please enter some text to covert to Lowercase!", "danger")
+    }
   };
 
   const handleClear = () => {
-    console.log("Clearcase was called");
-    setinputText('');
+    if (inputText) {
+      console.log("Clearcase was called");
+      setinputText('');
+      props.showAlert("Input text cleared!", "success");
+    }
+    else {
+      props.showAlert("No text to clear!", "danger")
+    }
+   
   };
 
   const handleClearAll = () => {
-    console.log("Clearcase was called");
-    setText('');
-    setinputText('');
-    setEmails('');
+    if (inputText || text) {
+      console.log("Clearcase was called");
+      setText('');
+      setinputText('');
+      setEmails('');
+      props.showAlert("All text cleared!", "success");
+    }
+    else {
+      props.showAlert("No text to clear!", "danger")
+    }
   };
 
   const handleOnChange = (event) => {
@@ -36,12 +61,24 @@ function TextForm(props) {
   };
 
   const extractEmails = () => {
-    const extracted = inputText.match(emailRegex);
-    setEmails(extracted || []);
+    if (inputText) {
+      const extracted = inputText && inputText.match(emailRegex);
+      extracted && setEmails(extracted || []);
+      extracted ? props.showAlert("Emails extracted!", "success") : props.showAlert("No emails found", "danger");
+    }
+    else {
+      props.showAlert("Please enter some text to extract emails!", "danger")
+    }
   };
 
   const copyText = () => {
-    navigator.clipboard.writeText(inputText);
+    if (inputText) {
+      navigator.clipboard.writeText(inputText);
+      props.showAlert("Copied to Clipboard!", "success");
+    }
+    else {
+      props.showAlert("Please enter some text to copy!", "danger")
+    }
   }
 
   return (
@@ -71,16 +108,16 @@ function TextForm(props) {
             Covert to Lowercase
           </button>
 
-          <button className="btn btn-primary me-3" onClick={handleClear}>
-            Clear Text
-          </button>
-
           <button className="btn btn-primary me-3" onClick={extractEmails}>
             Extract Email
           </button>
 
-          <button className="btn btn-primary" onClick={copyText}>
+          <button className="btn btn-primary me-3" onClick={copyText}>
             Copy Text
+          </button>
+
+          <button className="btn btn-primary" onClick={handleClear}>
+            Clear Text
           </button>
         </div>
 
@@ -91,7 +128,7 @@ function TextForm(props) {
           </p>
           <p>{0.008 * words} minutes read</p>
           <h2>Preview</h2>
-          <p>{text.length>0? text: "Enter something to preview it here"}</p>
+          <p>{text.length > 0 ? text : "Enter something to preview it here"}</p>
           <h2>Extracted Emails:</h2>
           <p>
             {emails.length > 0 ? emails.join(", ") : "No emails found."}
