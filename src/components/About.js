@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+
 
 export default function About(props) {
 
@@ -11,8 +11,8 @@ export default function About(props) {
   // const [modeBtnStyle, setModeBtnStyle] = useState("btn btn-dark mt-3");
   // const [modeBtnText, setModeBtnText] = useState("Dark");
 
-  let modeBtnStyle;
-  let modeBtnText;
+  // let modeBtnStyle;
+  // let modeBtnText;
   let myStyle;
 
   if (props.darkMode) {
@@ -41,6 +41,8 @@ export default function About(props) {
       color: 'black'
     };
   }
+
+  document.title = "About Us";
 
   return (
     <div className='container p-3' style={myStyle}>

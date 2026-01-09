@@ -81,6 +81,9 @@ function TextForm(props) {
     }
   }
 
+  // document.title = "Text Utils3";
+  document.title = "Text Utils - Home";
+
   return (
     <>
       <div className={`container text-${props.darkMode ? 'light' : 'dark'}`}>
