@@ -17,7 +17,7 @@ Core concepts covered inside:
 - Routes - It has a navbar that is having a link to Home page and About us pages and also a switch to change theme from dark to light
 - State and Props - State mostly Used for handling text utilities inside Home page and for handling theme changes in other pages
 - Event handling - Used for handling text utilities
-- Alerts - For displaying user interactive messages as per action
+- Alerts - For displaying user interactive messages as per action, and handle null input
 - Dynamic Title - For changing app title on click of pages and highlight/repeatitive changing while switching from dark mode to light
 - Upload to github pages
 
