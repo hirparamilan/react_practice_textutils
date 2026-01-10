@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function TextForm(props) {
   const [text, setText] = useState("");
   const [inputText, setinputText] = useState("");
-  const words = text ? text.split(" ").filter((element) => element.length !== 0).length : 0;
+  const words = text ? text.split(/\s+/).filter((element) => element.length !== 0).length : 0;
   const [emails, setEmails] = useState([]);
   const emailRegex = /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/gi;
 
