@@ -99,32 +99,45 @@ function TextForm(props) {
             ></textarea>
           </div>
 
-          <div className="row">
-            <div className="col">
-              <button className="btn btn-warning mt-3 me-3" onClick={handleClearAll}>
-                Clear Everything
-              </button>
+          <div className="container-fluid px-0 mt-2">
+            {/* g-3 adds horizontal/vertical spacing; row-cols-1 stacks mobile by default */}
+            <div className="row g-3 row-cols-1 row-cols-md-2">
 
-              <button disabled={inputText.length === 0} className="btn btn-warning mt-3" onClick={handleClear}>
-                Clear Text
-              </button>
-            </div>
-            <div className="col pe-0">
-              <button className="btn btn-primary me-3 mt-3" onClick={handleUpClick}>
-                Covert to Uppercase
-              </button>
+              {/* Column 1: "Clear" Buttons */}
+              <div className="col">
+                <div className="d-grid d-sm-flex gap-2">
+                  <button className="btn btn-warning" onClick={handleClearAll}>
+                    Clear Everything
+                  </button>
+                  <button
+                    disabled={inputText.length === 0}
+                    className="btn btn-warning"
+                    onClick={handleClear}
+                  >
+                    Clear Text
+                  </button>
+                </div>
+              </div>
 
-              <button className="btn btn-primary me-3 mt-3" onClick={handleLoClick}>
-                Covert to Lowercase
-              </button>
+              {/* Column 2: Action Buttons (Right-aligned on Desktop) */}
+              <div className="col text-md-end">
+                {/* d-grid stacks buttons on mobile; d-md-inline-flex keeps them in a row on desktop */}
+                <div className="d-grid d-md-inline-flex flex-wrap gap-2 justify-content-md-end">
+                  <button className="btn btn-primary" onClick={handleUpClick}>
+                    Convert to Uppercase
+                  </button>
+                  <button className="btn btn-primary" onClick={handleLoClick}>
+                    Convert to Lowercase
+                  </button>
+                  <button className="btn btn-primary" onClick={extractEmails}>
+                    Extract Email
+                  </button>
+                  <button className="btn btn-primary" onClick={copyText}>
+                    Copy Text
+                  </button>
+                </div>
+              </div>
 
-              <button className="btn btn-primary me-3 mt-3" onClick={extractEmails}>
-                Extract Email
-              </button>
-
-              <button className="btn btn-primary mt-3" onClick={copyText}>
-                Copy Text
-              </button>
             </div>
           </div>
         </div>
