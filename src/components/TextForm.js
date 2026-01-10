@@ -82,13 +82,13 @@ function TextForm(props) {
   }
 
   // document.title = "Text Utils3";
-  document.title = "Text Utils - Home";
+  document.title = "TextUtils - Word counter | character counter | lowercase to uppercase | uppercase to lowercase";
 
   return (
     <>
       <div className={`container text-${props.darkMode ? 'light' : 'dark'}`}>
         <div className="container">
-          <h1>{props.heading}</h1>
+          <h1 className="mb-3">{props.heading}</h1>
           <div>
             <textarea
               className={`form-control bg-${props.darkMode ? 'dark' : 'light'}  text-${props.darkMode ? 'light' : 'dark'}`}
@@ -99,13 +99,17 @@ function TextForm(props) {
             ></textarea>
           </div>
 
-          <div className="row justify-content-between">
-            <div className="col-md-2">
-              <button className="btn btn-warning mt-3" onClick={handleClearAll}>
+          <div className="row">
+            <div className="col">
+              <button className="btn btn-warning mt-3 me-3" onClick={handleClearAll}>
                 Clear Everything
               </button>
+
+              <button disabled={inputText.length === 0} className="btn btn-warning mt-3" onClick={handleClear}>
+                Clear Text
+              </button>
             </div>
-            <div className="col-md-7 justify-content-end  offset-md-3">
+            <div className="col pe-0">
               <button className="btn btn-primary me-3 mt-3" onClick={handleUpClick}>
                 Covert to Uppercase
               </button>
@@ -118,12 +122,8 @@ function TextForm(props) {
                 Extract Email
               </button>
 
-              <button className="btn btn-primary me-3 mt-3" onClick={copyText}>
+              <button className="btn btn-primary mt-3" onClick={copyText}>
                 Copy Text
-              </button>
-
-              <button className="btn btn-primary mt-3" onClick={handleClear}>
-                Clear Text
               </button>
             </div>
           </div>
