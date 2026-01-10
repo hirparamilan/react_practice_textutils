@@ -4,8 +4,8 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import About from "./components/About";
-import React, { useState } from 'react'
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useState } from 'react'
+import { HashRouter, Route, Routes } from "react-router-dom";
 import Alert from "./components/Alert";
 
 function App() {
@@ -48,16 +48,16 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Navbar title="TextUtils" aboutText="About Us" darkMode={darkMode} toggleMode={toggleMode} />
         <Alert alert={alert} />
         <div className="container my-3">
           <Routes>
-            <Route index path="/react_practice_textutils" element={<TextForm heading="Enter the text to analyze below" darkMode={darkMode} showAlert={showAlert}/>} />
-            <Route path="/react_practice_textutils/about" element={<About darkMode={darkMode} />} />
+            <Route index path="/" element={<TextForm heading="Enter the text to analyze below" darkMode={darkMode} showAlert={showAlert}/>} />
+            <Route path="/about" element={<About darkMode={darkMode} />} />
           </Routes>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 }

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function TextForm(props) {
   const [text, setText] = useState("");
   const [inputText, setinputText] = useState("");
-  const words = text ? text.split(" ").length : 0;
+  const words = text ? text.split(" ").filter((element) => element.length !== 0).length : 0;
   const [emails, setEmails] = useState([]);
   const emailRegex = /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/gi;
 
@@ -39,7 +39,7 @@ function TextForm(props) {
     else {
       props.showAlert("No text to clear!", "danger")
     }
-   
+
   };
 
   const handleClearAll = () => {
@@ -89,7 +89,7 @@ function TextForm(props) {
       <div className={`container text-${props.darkMode ? 'light' : 'dark'}`}>
         <div className="container">
           <h1>{props.heading}</h1>
-          <div className="mb-3">
+          <div>
             <textarea
               className={`form-control bg-${props.darkMode ? 'dark' : 'light'}  text-${props.darkMode ? 'light' : 'dark'}`}
               value={inputText}
@@ -99,29 +99,34 @@ function TextForm(props) {
             ></textarea>
           </div>
 
-          <button className="btn btn-warning me-5" onClick={handleClearAll}>
-            Clear Everything
-          </button>
+          <div className="row justify-content-between">
+            <div className="col-md-2">
+              <button className="btn btn-warning mt-3" onClick={handleClearAll}>
+                Clear Everything
+              </button>
+            </div>
+            <div className="col-md-7 justify-content-end  offset-md-3">
+              <button className="btn btn-primary me-3 mt-3" onClick={handleUpClick}>
+                Covert to Uppercase
+              </button>
 
-          <button className="btn btn-primary ms-5 me-3" onClick={handleUpClick}>
-            Covert to Uppercase
-          </button>
+              <button className="btn btn-primary me-3 mt-3" onClick={handleLoClick}>
+                Covert to Lowercase
+              </button>
 
-          <button className="btn btn-primary me-3" onClick={handleLoClick}>
-            Covert to Lowercase
-          </button>
+              <button className="btn btn-primary me-3 mt-3" onClick={extractEmails}>
+                Extract Email
+              </button>
 
-          <button className="btn btn-primary me-3" onClick={extractEmails}>
-            Extract Email
-          </button>
+              <button className="btn btn-primary me-3 mt-3" onClick={copyText}>
+                Copy Text
+              </button>
 
-          <button className="btn btn-primary me-3" onClick={copyText}>
-            Copy Text
-          </button>
-
-          <button className="btn btn-primary" onClick={handleClear}>
-            Clear Text
-          </button>
+              <button className="btn btn-primary mt-3" onClick={handleClear}>
+                Clear Text
+              </button>
+            </div>
+          </div>
         </div>
 
         <div className="container my-3">
