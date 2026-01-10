@@ -6,7 +6,7 @@ function Navbar(props) {
   return (
     <nav className={`navbar navbar-expand-lg navbar-${props.darkMode ? 'dark' : 'light'} bg-${props.darkMode ? 'dark' : 'light'}`}>
       <div className="container-fluid">
-        <NavLink className="navbar-brand" to="/">
+        <NavLink className="navbar-brand" to="/react_practice_textutils">
           {props.title}
         </NavLink>
         {/* <a className="navbar-brand" href="/">
@@ -31,7 +31,7 @@ function Navbar(props) {
               </a> */}
               <NavLink
                 className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                to="/"
+                to="/react_practice_textutils"
               >
                 Home
               </NavLink>
@@ -42,7 +42,7 @@ function Navbar(props) {
               </a> */}
               <NavLink
                 className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                to="/about"
+                to="/react_practice_textutils/about"
               >
                 {props.aboutText}
               </NavLink>

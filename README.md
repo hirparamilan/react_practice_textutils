@@ -1,10 +1,16 @@
-# Getting Started with Create React App
+# Text Utility App
 
+This project is just for my React learning demo.
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Available functionalities
 
-In the project directory, you can run:
+The project contains:
+- NavBar - Including Navigation links to Home and About Us page, and switch to Enable Dark & Light mode
+- Home Page - Text Utilities can be used here
+- About Us Page - Just a use of Accordian, and Dark-Light mode
+
+Using this Text Utility App, you can do:
 
 ### `npm start`
 

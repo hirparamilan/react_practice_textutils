@@ -53,8 +53,8 @@ function App() {
         <Alert alert={alert} />
         <div className="container my-3">
           <Routes>
-            <Route path="/" element={<TextForm heading="Enter the text to analyze below" darkMode={darkMode} showAlert={showAlert}/>} />
-            <Route path="/about" element={<About darkMode={darkMode} />} />
+            <Route index path="/react_practice_textutils" element={<TextForm heading="Enter the text to analyze below" darkMode={darkMode} showAlert={showAlert}/>} />
+            <Route path="/react_practice_textutils/about" element={<About darkMode={darkMode} />} />
           </Routes>
         </div>
       </BrowserRouter>
